@@ -22,11 +22,22 @@
 			left: 550px;
 			top: 30px;
 		}
-		/* класс для кнопки */
+		/* класс для кнопки 1 */
 		.button {
 			position: absolute;
 			left: 530px;
 			top: 30px;
+		}
+		/* класс для кнопки 2 */
+		.button2 {
+			position: absolute;
+			left: 330px;
+			top: 30px;
+		}
+		.sunflower {
+			position: absolute;
+			width: 50px;
+			display: none;
 		}
 	</style>
 </head>
@@ -34,12 +45,19 @@
 	<div class="box" style="background-image: url(game.png); height: 657px; width: 1360px; background-size: 100% 100%">
 		<h5 class="score"></h5>
     	<button class="btn btn-success button">Увеличить горох</button>
+    	<button class="btn btn-success button2">Посадить цветок</button>
 		<!-- горох 5 шт. -->
 	  	<img class="peas" src="peashooter.png"  style="top: 190px; left: 400px;">
 		<img class="peas" src="peashooter.png"  style="top: 270px; left: 400px;">
 		<img class="peas" src="peashooter.png"  style="top: 360px; left: 400px;">
 		<img class="peas" src="peashooter.png"  style="top: 450px; left: 400px;">
 		<img class="peas" src="peashooter.png"  style="top: 530px; left: 400px;">
+		<!-- цветочки 5 шт. скрыты изначально -->
+	  	<img class="sunflower" src="sunflower.png"  style="top: 190px; left: 460px;">
+		<img class="sunflower" src="sunflower.png"  style="top: 270px; left: 460px;">
+		<img class="sunflower" src="sunflower.png"  style="top: 360px; left: 460px;">
+		<img class="sunflower" src="sunflower.png"  style="top: 450px; left: 460px;">
+		<img class="sunflower" src="sunflower.png"  style="top: 530px; left: 460px;">
 		<!-- зомби 5 шт. -->
 		<img class="zombies" src="zombie1.png" style="top: 160px; left: 1100px;">
 		<img class="zombies" src="zombie2.png" style="top: 250px; left: 1100px;">
@@ -48,14 +66,83 @@
 		<img class="zombies" src="zombie3.png" style="top: 520px; left: 1100px;">
 	</div>
 	<script type="text/javascript">
-		/* Задание. При клике на кнопку "Увеличить горох" меняется атрибут src у всего гороха. */
+		/* Задание. При нажатии на кнопку "Посадить цветы" появляются цветы. Посмотри внимательно, на класс ".sunflower". Как нужно сделать, чтобы цветок появился? */
 		let peas = document.querySelectorAll(".peas")
 		let btn = document.querySelector(".btn")
+		let btnFlower = document.querySelector(".button2")
+		let sunflower = document.querySelectorAll(".sunflower")
 		btn.onclick = function(){
 			for(i=0; i<5; i=i+1){
 				peas[i].src = "peashooter2.png"
 			}
 		}
+
+		btnFlower.onclick = function(){
+			for(i=0; i<5; i=i+1){
+				sunflower[i].style.display = "block"
+			}
+		}
+
+		let shooter = document.querySelectorAll(".shooter")
+	let zombies = document.querySelectorAll(".zombies")
+	let scoreBox = document.querySelector(".score")
+	let zombiesLeft = 1140
+	let zombiesLeft2 = 1140
+	let zombiesLeft3 = 1140
+	let zombiesLeft4 = 1140
+	let zombiesLeft5 = 1140
+	let score = 0
+
+	zombies[0].onclick = function(){
+		zombiesLeft = zombiesLeft - 100
+		zombies[0].style.left = zombiesLeft + "px"
+		if(zombiesLeft <= 500){
+			alert("1 зомби съел горох")
+			shooter[0].style.display = "none"
+			score = score + 50
+			scoreBox.innerHTML = score
+		}
+	}
+	zombies[1].onclick = function(){
+		zombiesLeft2 = zombiesLeft2 - 100
+		zombies[1].style.left = zombiesLeft2 + "px"
+		if(zombiesLeft2 <= 500){
+			alert("2 зомби съел горох")
+			shooter[1].style.display = "none"
+			score = score + 50
+			scoreBox.innerHTML = score
+		}
+	}
+	zombies[2].onclick = function(){
+		zombiesLeft3 = zombiesLeft3 - 100
+		zombies[2].style.left = zombiesLeft3 + "px"
+		if(zombiesLeft3 <= 500){
+			alert("3 зомби съел горох")
+			shooter[2].style.display = "none"
+			score = score + 50
+			scoreBox.innerHTML = score
+		}
+	}
+	zombies[3].onclick = function(){
+		zombiesLeft4 = zombiesLeft4 - 100
+		zombies[3].style.left = zombiesLeft4 + "px"
+		if(zombiesLeft4 <= 500){
+			alert("4 зомби съел горох")
+			shooter[3].style.display = "none"
+			score = score + 50
+			scoreBox.innerHTML = score
+		}
+	}
+	zombies[4].onclick = function(){
+		zombiesLeft5 = zombiesLeft5 - 100
+		zombies[4].style.left = zombiesLeft5 + "px"
+		if(zombiesLeft5 <= 500){
+			alert("5 зомби съел горох")
+			shooter[4].style.display = "none"
+			score = score + 50
+			scoreBox.innerHTML = score
+		}
+	}
 	</script>
 </body>
 </html>
